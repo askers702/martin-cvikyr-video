@@ -1,0 +1,148 @@
+---
+// Portfolio Component (Editorial Elegance)
+const portfolioItems = [
+  { title: "Svatební klip", category: "Svatební video", imgPlaceholder: "Náhled videa" },
+  { title: "Záběry z dronu", category: "Letecké záběry", imgPlaceholder: "Náhled videa" },
+  { title: "Film PSO (ukázka)", category: "Kino / Film", imgPlaceholder: "Náhled videa" },
+  { title: "Komerční spot", category: "Komerční produkce", imgPlaceholder: "Náhled videa" }
+];
+---
+
+<section id="portfolio" class="section portfolio-section">
+  <div class="container">
+    <div class="section-header text-center fade-in">
+      <span class="label">Portfolio</span>
+      <h2>Vybrané projekty</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="portfolio-grid">
+      {portfolioItems.map((item, i) => (
+        <div class="portfolio-item fade-in" style={`animation-delay: ${0.2 * i}s`}>
+          <div class="video-frame">
+            <span>{item.imgPlaceholder}</span>
+            <div class="overlay">
+              <span class="play-text">Přehrát</span>
+            </div>
+          </div>
+          <div class="item-meta">
+            <h3>{item.title}</h3>
+            <span class="category">{item.category}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    <div class="text-center fade-in" style="margin-top: 4rem;">
+        <a href="#kontakt" class="btn btn-outline">Prohlédnout více práce</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .portfolio-section {
+    background-color: var(--color-surface);
+  }
+
+  .section-header {
+    margin-bottom: 4rem;
+  }
+
+  .label {
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    color: var(--color-primary);
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .section-header h2 {
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .divider {
+    width: 40px;
+    height: 1px;
+    background-color: var(--color-primary);
+    margin: 0 auto;
+  }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 3rem;
+  }
+
+  .portfolio-item {
+    width: 100%;
+    cursor: pointer;
+  }
+
+  .video-frame {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: var(--color-surface-light);
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted);
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(253, 251, 249, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+  }
+
+  .portfolio-item:hover .overlay {
+    opacity: 1;
+  }
+
+  .play-text {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    padding: 0.6rem 1.5rem;
+    border-radius: 4px;
+    transform: translateY(10px);
+    transition: transform var(--transition-normal);
+  }
+
+  .portfolio-item:hover .play-text {
+    transform: translateY(0);
+  }
+
+  .item-meta {
+    margin-top: 1.5rem;
+    text-align: center;
+  }
+
+  .item-meta h3 {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .category {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    font-family: var(--font-sans);
+  }
+</style>

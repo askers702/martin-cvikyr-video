@@ -1,0 +1,79 @@
+---
+// Footer Component
+---
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <h3>Martin <span class="text-primary">Cvikýř</span></h3>
+      <p class="footer-desc">Svatební a firemní videografie</p>
+    </div>
+    
+    <div class="footer-social">
+      <a href="#">Instagram</a>
+      <a href="#">Vimeo</a>
+      <a href="#">Facebook</a>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <div class="container">
+      <p class="footer-copyright">&copy; {new Date().getFullYear()} Michal Prouza. Všechna práva vyhrazena.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background-color: #050505;
+    padding-top: 4rem;
+    color: #fdfbf9;
+  }
+
+  .footer-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 3rem;
+  }
+
+  @media (min-width: 768px) {
+    .footer-inner {
+      flex-direction: row;
+      justify-content: space-between;
+      text-align: left;
+    }
+  }
+
+  .footer-brand h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .footer-social a {
+    color: #fdfbf9;
+    font-weight: 500;
+  }
+
+  .footer-social a:hover {
+    color: var(--color-primary);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.5rem 0;
+    text-align: center;
+    font-size: 0.85rem;
+  }
+  
+  .footer-desc, .footer-copyright {
+    color: rgba(255, 255, 255, 0.6);
+  }
+</style>

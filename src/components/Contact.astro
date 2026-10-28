@@ -1,0 +1,141 @@
+---
+// Contact component
+---
+
+<section id="kontakt" class="section contact-section">
+  <div class="container">
+    <div class="contact-wrapper fade-in">
+      <div class="contact-info">
+        <h2>Co pro Vás můžeme zachytit?</h2>
+        <p class="text-muted">Zaujala vás moje práce? Napište mi a společně vymyslíme, jak nejlépe zachytit váš příběh.</p>
+        
+        <ul class="contact-details">
+          <li>
+            <span class="label">E-mail:</span>
+            <a href="mailto:info@martincvikyr.cz">info@martincvikyr.cz</a>
+          </li>
+          <li>
+            <span class="label">Telefon:</span>
+            <a href="tel:+420123456789">+420 123 456 789</a>
+          </li>
+          <li>
+            <span class="label">Působnost:</span>
+            <span>Česká republika</span>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="contact-form-wrapper">
+        <form class="contact-form">
+          <div class="form-group">
+            <label for="name">Jméno a příjmení</label>
+            <input type="text" id="name" placeholder="Jan Novák" required />
+          </div>
+          
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" placeholder="jan@novak.cz" required />
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Vaše zpráva (termín, místo atd.)</label>
+            <textarea id="message" rows="5" placeholder="Dobrý den, plánujeme svatbu..." required></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-primary">Odeslat zprávu</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-section {
+    background-color: var(--color-surface);
+  }
+
+  .contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    background: var(--color-bg);
+    padding: 3rem;
+    border-radius: 12px;
+    border: 1px solid var(--color-surface-light);
+  }
+
+  @media (min-width: 992px) {
+    .contact-wrapper {
+      grid-template-columns: 1fr 1fr;
+      padding: 4rem;
+    }
+  }
+
+  .contact-info h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-family: var(--font-serif);
+  }
+
+  .contact-info p {
+    margin-bottom: 2rem;
+  }
+
+  .contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .contact-details li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    min-width: 90px;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  label {
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  input, textarea {
+    background: var(--color-surface);
+    border: 1px solid var(--color-surface-light);
+    padding: 1rem;
+    border-radius: 4px;
+    color: var(--color-text);
+    font-family: inherit;
+    transition: border-color var(--transition-fast);
+  }
+
+  input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+  }
+
+  button {
+    width: 100%;
+    margin-top: 1rem;
+  }
+</style>

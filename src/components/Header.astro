@@ -1,0 +1,138 @@
+---
+// Header component (Editorial Elegance)
+---
+
+<header class="header" id="main-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">
+      <img src="/logo.png" alt="Martin Cvikýř" class="header-logo" />
+    </a>
+    
+    <nav class="nav-links">
+      <a href="#sluzby">Služby</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#o-mne">O mně</a>
+      <a href="#kontakt" class="contact-link">Kontakt</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 2rem 0;
+    transition: all var(--transition-normal);
+    background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, transparent 100%);
+  }
+  
+  .header.scrolled {
+    background: rgba(253, 251, 249, 0.95);
+    padding: 1.2rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 767px) {
+    .header-inner {
+      justify-content: center; /* Na mobilu vycentrujeme, protože tam není menu */
+    }
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    transition: opacity 0.3s;
+  }
+  
+  .header-logo {
+    max-height: 75px; /* Větší základ pro mobil */
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 15px rgba(0,0,0,0.85)); 
+    transform: scale(1.3); /* Výraznější i na mobilu */
+    transform-origin: center center;
+    transition: filter 0.3s, transform 0.3s;
+  }
+
+  @media (min-width: 768px) {
+    .header-logo {
+      max-height: 80px;
+      transform: scale(1.8); /* Masivní zvětšení pro desktop vráceno zpět */
+      transform-origin: left center;
+    }
+  }
+  
+  .logo:hover {
+    opacity: 0.8;
+  }
+  
+  .header.scrolled .header-logo {
+    filter: invert(1); /* Přebarví bílé logo na černé a bílé pozadí */
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+    }
+    
+    .nav-links a {
+      font-size: 1.05rem;
+      font-family: var(--font-sans);
+      color: #ffffff;
+      text-shadow: 0 2px 15px rgba(0,0,0,0.7), 0 2px 4px rgba(0,0,0,0.8);
+      opacity: 0.95;
+      letter-spacing: 1px;
+      transition: all 0.3s;
+    }
+    
+    .header.scrolled .nav-links a {
+      color: var(--color-text);
+      text-shadow: none;
+      opacity: 0.8;
+    }
+    
+    .nav-links a:hover {
+      opacity: 1;
+      color: var(--color-primary);
+    }
+    
+    .contact-link {
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      padding: 0.5rem 1.2rem;
+      border-radius: 4px;
+    }
+    
+    .header.scrolled .contact-link {
+      border: 1px solid rgba(0, 0, 0, 0.2);
+    }
+    .contact-link:hover {
+      border-color: var(--color-primary);
+    }
+  }
+</style>
+
+<script>
+  const header = document.getElementById('main-header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      header?.classList.add('scrolled');
+    } else {
+      header?.classList.remove('scrolled');
+    }
+  });
+</script>

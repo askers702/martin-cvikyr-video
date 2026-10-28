@@ -1,0 +1,90 @@
+---
+// Services Component (Editorial Elegance)
+const services = [
+  { title: "Svatby", desc: "Zajistím natáčení po celou dobu svatby nebo jen vybranou část dne. Výstupem může být kraťoučký klip, delší sestřih nebo kompletní film. Vždy dodávám i celé proslovy a všechny výjimečné situace, které budete chtít mít zaznamenané. Cenu řešíme zcela individuálně s detailním složením balíčku, tak abych splnil všechna vaše přání." },
+  { title: "Reality & Prezentace", desc: "Jsme schopni zajistit kompletní foto i video dokumentaci realit pro prodej, pronájem i pro osobní prezentaci. Můžeme pro vás zajistit i tvorbu moderních webových stránek." },
+  { title: "Dronové záběry", desc: "Disponujeme všemi dostupnými certifikáty pro provoz dronů a při létání přísně dodržujeme legislativu. Získáte dechberoucí letecké záběry plně v souladu se zákonem." }
+];
+---
+
+<section id="sluzby" class="section services-section">
+  <div class="container">
+    <div class="section-header text-center fade-in">
+      <span class="label">Služby</span>
+      <h2>Jak Vám mohu pomoci</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="services-grid">
+      {services.map((service, index) => (
+        <div class="service-card fade-in" style={`animation-delay: ${0.2 * (index + 1)}s`}>
+          <h3>{service.title}</h3>
+          <p class="text-muted">{service.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .services-section {
+    background-color: var(--color-bg);
+  }
+
+  .section-header {
+    margin-bottom: 4rem;
+  }
+
+  .label {
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    color: var(--color-primary);
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .section-header h2 {
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .divider {
+    width: 40px;
+    height: 1px;
+    background-color: var(--color-primary);
+    margin: 0 auto;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+  }
+
+  .service-card {
+    background: var(--color-surface);
+    padding: 3rem 2.5rem;
+    border-radius: 8px; /* Elegant rounding */
+    border: 1px solid var(--color-surface-light);
+    transition: transform var(--transition-normal), border-color var(--transition-normal);
+    text-align: center;
+  }
+
+  .service-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(212, 193, 156, 0.3); /* Subtle primary border */
+  }
+
+  .service-card h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+  }
+
+  .service-card p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+</style>

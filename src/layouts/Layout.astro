@@ -1,0 +1,58 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title = "Martin Cvikýř | Svatební a firemní videografie", description = "Martin Cvikýř | Svatební a firemní videografie" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="cs">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		
+		<!-- SEO -->
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		
+		<!-- Google Fonts: Inter & Playfair Display -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<slot />
+		
+		<!-- Design Switcher -->
+		<a href="/alt" class="switcher">Styl 1 →</a>
+	</body>
+</html>
+
+<style>
+  .switcher {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--color-primary);
+    color: #000;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+    font-family: var(--font-sans);
+    text-decoration: none;
+  }
+  .switcher:hover {
+    transform: translateY(-2px);
+    color: #000;
+  }
+</style>

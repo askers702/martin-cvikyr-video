@@ -1,0 +1,118 @@
+---
+// Hero Component (Editorial Elegance)
+---
+
+<section class="hero">
+  <div class="video-container">
+    <iframe src="https://www.youtube.com/embed/yroy9V75D5s?autoplay=1&mute=1&controls=0&loop=1&playlist=yroy9V75D5s&playsinline=1&rel=0&showinfo=0" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+  </div>
+  <div class="video-overlay"></div>
+
+  <div class="container hero-content text-center">
+    <p class="subtitle fade-in">Vytvářím vzpomínky na celý život</p>
+    <h1 class="fade-in delay-1">Martin Cvikýř</h1>
+    <div class="divider fade-in delay-2"></div>
+    <p class="desc fade-in delay-2">Svatební a firemní videografie</p>
+    
+    <div class="actions fade-in delay-3">
+      <a href="#sluzby" class="btn btn-primary">Co nabízím</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+    background-color: var(--color-bg);
+  }
+
+  .video-container iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 100vh;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    opacity: 0.85; /* Less transparent */
+  }
+
+  @media (min-aspect-ratio: 16/9) {
+    .video-container iframe { height: 56.25vw; }
+  }
+  @media (max-aspect-ratio: 16/9) {
+    .video-container iframe { width: 177.78vh; }
+  }
+
+  .video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1); /* Téměř úplně průhledné, žádné mléko */
+    z-index: 2;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .subtitle {
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.85rem;
+    color: #ffffff;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  }
+
+  h1 {
+    font-size: clamp(3rem, 8vw, 6rem);
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+    font-weight: 600;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+  }
+
+  .divider {
+    width: 60px;
+    height: 1px;
+    background-color: var(--color-primary);
+    margin: 0 auto 1.5rem auto;
+  }
+
+  .desc {
+    font-size: 1.2rem;
+    color: #ffffff;
+    margin-bottom: 3rem;
+    font-weight: 500;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  }
+
+  .delay-1 { animation-delay: 0.2s; }
+  .delay-2 { animation-delay: 0.4s; }
+  .delay-3 { animation-delay: 0.6s; }
+</style>

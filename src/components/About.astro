@@ -1,0 +1,99 @@
+---
+// Collab & About component
+---
+
+<section id="o-mne" class="section about-section">
+  <div class="container about-container">
+    
+    <div class="about-content fade-in">
+      <span class="label">Svatební dvojka</span>
+      <h2>Video & Fotografie</h2>
+      <div class="divider" style="margin: 0 0 1.5rem 0;"></div>
+      <p class="lead">Víme, že svatba je výjimečný den, který zabere hodně příprav a starostí.</p>
+      <p>
+        Proto úzce spolupracuji s profesionální fotografkou a dokážeme Váš svatební den zachytit v jednom balíčku.
+      </p>
+      <p>
+        Jsme perfektně sehraný tým. Navzájem si nepřekážíme v záběrech a vy máte o starost méně – vyřešíte s námi video i fotky najednou.
+      </p>
+    </div>
+
+    <div class="about-image fade-in delay-1">
+      <div class="image-placeholder">
+        <!-- Fotka, která se nafotí v sobotu -->
+        <span>Zde bude společná fotka ze sobotního natáčení</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .about-section {
+    background-color: var(--color-bg);
+  }
+
+  .about-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  @media (min-width: 992px) {
+    .about-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .image-placeholder {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: var(--color-surface);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    color: var(--color-text-muted);
+    border: 1px dashed var(--color-primary);
+  }
+
+  .label {
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    color: var(--color-primary);
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .about-content h2 {
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .divider {
+    width: 40px;
+    height: 1px;
+    background-color: var(--color-primary);
+  }
+
+  .lead {
+    font-size: 1.25rem;
+    color: var(--color-primary);
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    font-family: var(--font-serif);
+  }
+
+  .about-content p {
+    margin-bottom: 1.5rem;
+    color: var(--color-text-muted);
+    line-height: 1.8;
+  }
+
+  .delay-1 { animation-delay: 0.3s; }
+</style>

@@ -1,10 +1,21 @@
 ---
 // Portfolio Component (Editorial Elegance)
 const portfolioItems = [
-  { title: "Svatební klip", category: "Svatební video", imgPlaceholder: "Náhled videa" },
-  { title: "Záběry z dronu", category: "Letecké záběry", imgPlaceholder: "Náhled videa" },
-  { title: "Film PSO (ukázka)", category: "Kino / Film", imgPlaceholder: "Náhled videa" },
-  { title: "Komerční spot", category: "Komerční produkce", imgPlaceholder: "Náhled videa" }
+  { 
+    title: "Svatební klip", 
+    category: "Svatební video", 
+    youtubeId: "bgeBnafrxUo" 
+  },
+  { 
+    title: "Svatební sestřih", 
+    category: "Svatební video", 
+    youtubeId: "zgm8dy1qCkI" 
+  },
+  { 
+    title: "Nadhled & Atmosféra", 
+    category: "Dronové záběry", 
+    youtubeId: "Q10mHEweoU8" 
+  }
 ];
 ---
 
@@ -12,7 +23,7 @@ const portfolioItems = [
   <div class="container">
     <div class="section-header text-center fade-in">
       <span class="label">Portfolio</span>
-      <h2>Vybrané projekty</h2>
+      <h2>Ochutnávky z naší tvorby</h2>
       <div class="divider"></div>
     </div>
 
@@ -20,10 +31,14 @@ const portfolioItems = [
       {portfolioItems.map((item, i) => (
         <div class="portfolio-item fade-in" style={`animation-delay: ${0.2 * i}s`}>
           <div class="video-frame">
-            <span>{item.imgPlaceholder}</span>
-            <div class="overlay">
-              <span class="play-text">Přehrát</span>
-            </div>
+            <iframe 
+              src={`https://www.youtube.com/embed/${item.youtubeId}?rel=0&showinfo=0`}
+              title={item.title}
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
           </div>
           <div class="item-meta">
             <h3>{item.title}</h3>
@@ -34,7 +49,7 @@ const portfolioItems = [
     </div>
     
     <div class="text-center fade-in" style="margin-top: 4rem;">
-        <a href="#kontakt" class="btn btn-outline">Prohlédnout více práce</a>
+        <a href="#kontakt" class="btn btn-outline">Mám zájem o video</a>
     </div>
   </div>
 </section>
@@ -78,55 +93,31 @@ const portfolioItems = [
 
   .portfolio-item {
     width: 100%;
-    cursor: pointer;
   }
 
   .video-frame {
     width: 100%;
     aspect-ratio: 16/9;
-    background: var(--color-surface-light);
     border-radius: 6px;
     position: relative;
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-text-muted);
+    background: var(--color-surface-light);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: box-shadow var(--transition-normal), transform var(--transition-normal);
   }
 
-  .overlay {
+  .portfolio-item:hover .video-frame {
+    box-shadow: 0 8px 35px rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px);
+  }
+
+  .video-frame iframe {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(253, 251, 249, 0.85);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity var(--transition-normal);
-  }
-
-  .portfolio-item:hover .overlay {
-    opacity: 1;
-  }
-
-  .play-text {
-    font-family: var(--font-sans);
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--color-primary);
-    border: 1px solid var(--color-primary);
-    padding: 0.6rem 1.5rem;
-    border-radius: 4px;
-    transform: translateY(10px);
-    transition: transform var(--transition-normal);
-  }
-
-  .portfolio-item:hover .play-text {
-    transform: translateY(0);
+    border: none;
   }
 
   .item-meta {

@@ -2,7 +2,7 @@
 // Collab & About component
 ---
 
-<section id="o-mne" class="section about-section">
+<section id="svatebni-dvojka" class="section about-section">
   <div class="container about-container">
     
     <div class="about-content fade-in">
@@ -19,10 +19,7 @@
     </div>
 
     <div class="about-image fade-in delay-1">
-      <div class="image-placeholder">
-        <!-- Fotka, která se nafotí v sobotu -->
-        <span>Zde bude společná fotka ze sobotního natáčení</span>
-      </div>
+      <img src="/misa-martin.png" alt="Míša a Martin - svatební video a foto tým" class="duo-photo" />
     </div>
 
   </div>
@@ -46,18 +43,11 @@
     }
   }
 
-  .image-placeholder {
+  .duo-photo {
     width: 100%;
-    aspect-ratio: 4/3;
-    background: var(--color-surface);
     border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 2rem;
-    color: var(--color-text-muted);
-    border: 1px dashed var(--color-primary);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    object-fit: cover;
   }
 
   .label {

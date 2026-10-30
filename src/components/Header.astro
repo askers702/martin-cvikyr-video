@@ -5,13 +5,14 @@
 <header class="header" id="main-header">
   <div class="container header-inner">
     <a href="/" class="logo">
-      <img src="/logo.png" alt="Martin Cvikýř" class="header-logo" />
+      <img src="/logo.png" alt="Martin Cvikýř – Videotvorba" class="header-logo" />
     </a>
     
     <nav class="nav-links">
       <a href="#sluzby">Služby</a>
-      <a href="#portfolio">Portfolio</a>
       <a href="#o-mne">O mně</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#svatebni-dvojka">Svatební dvojka</a>
       <a href="#kontakt" class="contact-link">Kontakt</a>
     </nav>
   </div>
@@ -54,29 +55,33 @@
   }
   
   .header-logo {
-    max-height: 75px; /* Větší základ pro mobil */
+    max-height: 62px;
     width: auto;
     object-fit: contain;
-    filter: drop-shadow(0 4px 15px rgba(0,0,0,0.85)); 
-    transform: scale(1.3); /* Výraznější i na mobilu */
-    transform-origin: center center;
-    transition: filter 0.3s, transform 0.3s;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.9)) drop-shadow(0 4px 16px rgba(0, 0, 0, 0.65)); 
+    transition: all 0.3s ease;
   }
 
   @media (min-width: 768px) {
     .header-logo {
-      max-height: 80px;
-      transform: scale(1.8); /* Masivní zvětšení pro desktop vráceno zpět */
-      transform-origin: left center;
+      max-height: 76px;
     }
   }
   
   .logo:hover {
-    opacity: 0.8;
+    opacity: 0.9;
+    transform: translateY(-1px);
   }
   
   .header.scrolled .header-logo {
-    filter: invert(1); /* Přebarví bílé logo na černé a bílé pozadí */
+    max-height: 56px;
+    filter: invert(1) contrast(1.15); /* Přebarví bílé logo na sytě černé pro světlé pozadí */
+  }
+
+  @media (min-width: 768px) {
+    .header.scrolled .header-logo {
+      max-height: 64px;
+    }
   }
 
   .nav-links {

@@ -1,0 +1,96 @@
+---
+// Personal About Me component - Martin's personal section
+---
+
+<section id="o-mne" class="section aboutme-section">
+  <div class="container aboutme-container">
+
+    <div class="aboutme-image fade-in">
+      <img src="/martin-foto.png" alt="Martin Cvikýř při natáčení svatby" class="martin-photo" />
+    </div>
+
+    <div class="aboutme-content fade-in delay-1">
+      <span class="label">O mně</span>
+      <h2>Za kamerou stojím v klidu, aby vyniklo to podstatné.</h2>
+      <div class="divider"></div>
+      <p>
+        Věřím, že ty nejcennější momenty vznikají bez velkých gest a režírování – ve chvílích, kdy o přítomnosti kamery téměř nevíte.
+      </p>
+      <p>
+        Můj styl nestojí na rychlých efektech, ale na plynulých, stabilizovaných záběrech, přirozených barvách a promyšlené práci se zvukem. Tvorba videa je pro mě prostorem, kde se přirozený smysl pro detail, technickou přesnost a pečlivost potkává s radostí z vyprávění příběhů.
+      </p>
+      <p>
+        Největší odměnou pro mě není samotné dokončení střihu, ale okamžik, kdy hotové video předávám. Kdykoli je to možné, předávám práci osobně – protože vidět bezprostřední radost a dojetí v očích lidí je přesně ten důvod, proč to dělám.
+      </p>
+      <p>
+        Ať už jde o svatební den, architekturu domu nebo pohled shora, přistupuji ke každému záběru s maximálním respektem k vašemu času, prostoru a představám.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .aboutme-section {
+    background-color: var(--color-surface);
+  }
+
+  .aboutme-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  @media (min-width: 992px) {
+    .aboutme-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .martin-photo {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    object-fit: cover;
+    aspect-ratio: 4/3;
+  }
+
+  .label {
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    color: var(--color-primary);
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .aboutme-content h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+  }
+
+  .divider {
+    width: 40px;
+    height: 1px;
+    background-color: var(--color-primary);
+    margin: 0 0 1.5rem 0;
+  }
+
+  .aboutme-content p {
+    margin-bottom: 1.5rem;
+    color: var(--color-text-muted);
+    line-height: 1.8;
+  }
+
+  .aboutme-content p:first-of-type {
+    font-size: 1.15rem;
+    color: var(--color-primary);
+    font-family: var(--font-serif);
+    font-weight: 400;
+  }
+
+  .delay-1 { animation-delay: 0.3s; }
+</style>

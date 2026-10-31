@@ -16,11 +16,11 @@
           </li>
           <li>
             <span class="label">Telefon:</span>
-            <a href="tel:+420123456789">+420 123 456 789</a>
+            <a href="tel:+420605314457">+420 605 314 457</a>
           </li>
-          <li>
+          <li class="contact-scope">
             <span class="label">Působnost:</span>
-            <span>Česká republika</span>
+            <span>Nejčastěji mě s kamerou potkáte v Královéhradeckém kraji, kde působím primárně. Za dobrým projektem a zajímavým příběhem ale rád vyrazím kamkoliv po celé České republice — vzdálenost není překážkou, stačí se ozvat a domluvíme se.</span>
           </li>
         </ul>
       </div>
@@ -89,8 +89,9 @@
 
   .contact-details li {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 1rem;
+    line-height: 1.6;
   }
 
   .label {
@@ -100,6 +101,27 @@
     text-transform: uppercase;
     letter-spacing: 0.5px;
     min-width: 90px;
+    flex-shrink: 0;
+    padding-top: 0.15rem;
+  }
+
+  .contact-scope span:not(.label) {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 576px) {
+    .contact-wrapper {
+      padding: 1.5rem;
+    }
+    .contact-details li {
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+    .label {
+      min-width: auto;
+      padding-top: 0;
+    }
   }
 
   .contact-form {

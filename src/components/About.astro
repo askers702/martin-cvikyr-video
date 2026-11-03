@@ -5,10 +5,10 @@
 <section id="svatebni-dvojka" class="section about-section">
   <div class="container about-container">
     
-    <div class="about-content fade-in">
+    <div class="about-content fade-in text-center">
       <span class="label">Svatební dvojka</span>
       <h2>Video & Fotografie</h2>
-      <div class="divider" style="margin: 0 0 1.5rem 0;"></div>
+      <div class="divider"></div>
       <p class="lead">Víme, že svatba je výjimečný den, který zabere hodně příprav a starostí.</p>
       <p>
         Proto úzce spolupracuji s profesionální fotografkou a dokážeme Váš svatební den zachytit v jednom balíčku.
@@ -18,9 +18,11 @@
       </p>
     </div>
 
+    <!-- Fotka dua zatím odebrána
     <div class="about-image fade-in delay-1">
       <img src="/misa-martin.png" alt="Míša a Martin - svatební video a foto tým" class="duo-photo" />
     </div>
+    -->
 
   </div>
 </section>
@@ -31,16 +33,8 @@
   }
 
   .about-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 4rem;
-    align-items: center;
-  }
-
-  @media (min-width: 992px) {
-    .about-container {
-      grid-template-columns: 1fr 1fr;
-    }
+    max-width: 760px;
+    margin: 0 auto;
   }
 
   .duo-photo {
@@ -69,6 +63,7 @@
     width: 40px;
     height: 1px;
     background-color: var(--color-primary);
+    margin: 0 auto 1.5rem auto;
   }
 
   .lead {

@@ -26,28 +26,97 @@
       </div>
       
       <div class="contact-form-wrapper">
-        <form class="contact-form">
+        <form class="contact-form" id="contact-form">
+          <!-- Honeypot field for bot protection (invisible to real users) -->
+          <div class="hp-wrapper" aria-hidden="true">
+            <label for="contact-website">Nevyplňujte toto pole</label>
+            <input type="text" id="contact-website" name="website" tabindex="-1" autocomplete="off" />
+          </div>
+
           <div class="form-group">
             <label for="name">Jméno a příjmení</label>
-            <input type="text" id="name" placeholder="Jan Novák" required />
+            <input type="text" id="name" name="name" placeholder="Jan Novák" required />
           </div>
           
           <div class="form-group">
             <label for="email">E-mail</label>
-            <input type="email" id="email" placeholder="jan@novak.cz" required />
+            <input type="email" id="email" name="email" placeholder="jan@novak.cz" required />
           </div>
           
           <div class="form-group">
             <label for="message">Vaše zpráva (termín, místo atd.)</label>
-            <textarea id="message" rows="5" placeholder="Dobrý den, plánujeme svatbu..." required></textarea>
+            <textarea id="message" name="message" rows="5" placeholder="Dobrý den, plánujeme svatbu..." required></textarea>
           </div>
+
+          <div id="contact-status" class="contact-status" role="alert"></div>
           
-          <button type="submit" class="btn btn-primary">Odeslat zprávu</button>
+          <button type="submit" id="submit-btn" class="btn btn-primary">Odeslat zprávu</button>
         </form>
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement | null;
+  const statusEl = document.getElementById('contact-status') as HTMLDivElement | null;
+  const formLoadedAt = Date.now();
+
+  if (form && submitBtn && statusEl) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const nameInput = document.getElementById('name') as HTMLInputElement;
+      const emailInput = document.getElementById('email') as HTMLInputElement;
+      const messageInput = document.getElementById('message') as HTMLTextAreaElement;
+      const honeypotInput = document.getElementById('contact-website') as HTMLInputElement;
+
+      const payload = {
+        name: nameInput.value,
+        email: emailInput.value,
+        message: messageInput.value,
+        honeypot: honeypotInput ? honeypotInput.value : '',
+        timestamp: formLoadedAt,
+      };
+
+      // Set loading state
+      const originalBtnText = submitBtn.textContent || 'Odeslat zprávu';
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Odesílám...';
+      statusEl.style.display = 'none';
+      statusEl.className = 'contact-status';
+
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+
+        const result = await response.json();
+
+        if (response.ok && result.success) {
+          form.reset();
+          statusEl.textContent = 'Děkuji za zprávu! Byla v pořádku odeslána a na Váš e-mail dorazí potvrzení.';
+          statusEl.className = 'contact-status status-success';
+          statusEl.style.display = 'block';
+        } else {
+          statusEl.textContent = result.error || 'Při odesílání došlo k chybě. Zkuste to prosím znovu.';
+          statusEl.className = 'contact-status status-error';
+          statusEl.style.display = 'block';
+        }
+      } catch (err) {
+        statusEl.textContent = 'Nepodařilo se navázat spojení se serverem. Zkontrolujte připojení.';
+        statusEl.className = 'contact-status status-error';
+        statusEl.style.display = 'block';
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalBtnText;
+      }
+    });
+  }
+</script>
 
 <style>
   .contact-section {
@@ -130,6 +199,16 @@
     gap: 1.5rem;
   }
 
+  .hp-wrapper {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+  }
+
   .form-group {
     display: flex;
     flex-direction: column;
@@ -156,8 +235,33 @@
     border-color: var(--color-primary);
   }
 
+  .contact-status {
+    display: none;
+    padding: 1rem;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .status-success {
+    background-color: #f0fdf4;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+  }
+
+  .status-error {
+    background-color: #fef2f2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+  }
+
   button {
     width: 100%;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
   }
 </style>

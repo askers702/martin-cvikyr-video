@@ -107,7 +107,7 @@ export const POST: APIRoute = async ({ request }) => {
         <div style="font-family: sans-serif; line-height: 1.6; color: #1a1a1a; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e5e5e5; border-radius: 8px;">
           <h2 style="color: #966541; margin-top: 0;">Děkuji za Vaši zprávu</h2>
           <p>Dobrý den, ${cleanName},</p>
-          <p>děkuji za Váš zájem a zaslání poptávky. Vaši zprávu jsem v pořádku přijal a ozvu se Vám zpět co nejdříve (zpravidla do 24 hodin).</p>
+          <p>děkuji za Váš zájem a zaslání poptávky. Vaši zprávu jsem v pořádku přijal a ozvu se Vám zpět co nejdříve.</p>
           
           <div style="margin: 20px 0; padding: 15px; background: #faf7f2; border-left: 4px solid #966541; border-radius: 4px;">
             <p style="margin: 0; font-weight: bold; color: #555;">Kopie Vaší zprávy:</p>
@@ -142,3 +142,4 @@ export const POST: APIRoute = async ({ request }) => {
     );
   }
 };
+
